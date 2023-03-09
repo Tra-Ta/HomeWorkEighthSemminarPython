@@ -1,3 +1,35 @@
+
+
+def main_menu(sprav):
+    file = 'phoneBook.txt'
+    while True:
+        user_choice = input(' \n'
+                            '1 - Добавить контакт\n'
+                            '2 - Найти контакт\n'
+                            '3 - Изменить контакт\n'
+                            '4 - Удалить контакт\n'
+                            '5 - Показать весь справочник\n\n'
+                            '0 - EXIT\n'
+                            '\n')
+        print()
+        if user_choice == '1':
+            add_contact(sprav)
+        elif user_choice == '2':
+            lst_contacts = read_file(file)
+            search_param, what = ask_search()
+            res = search_contact(lst_contacts, search_param, what)
+            print(res)
+        elif user_choice == '3':
+            change_contact(sprav)
+        elif user_choice == '4':
+            delete_contact(sprav)
+        elif user_choice == '5':
+            show(sprav)
+        elif user_choice == '0':
+            print('До свидания!')
+            break
+
+
 def read_file(file):
     with open(file, 'r', encoding='utf-8') as fd:
         lines = fd.readlines()
